@@ -1,13 +1,8 @@
-import { useState, useEffect } from 'react';
-import { fetchMovieCast } from '../../services/movies-api';
+import React from 'react';
+import PropTypes from 'prop-types';
+import s from './Cast.module.css';
 
 function Cast({ cast }) {
-    // const [cast, setCast] = useState([]);
-
-    // useEffect(() => {
-    //     fetchMovieCast(movieId)
-    //         .then(response => setCast(response.cast));
-    // }, [movieId]);
 
     return (
         <ul className={s.list}>
@@ -26,5 +21,9 @@ function Cast({ cast }) {
         </ul>
     );
 }
+
+Cast.propTypes = {
+  cast: PropTypes.array.isRequired,
+};
 
 export default Cast;

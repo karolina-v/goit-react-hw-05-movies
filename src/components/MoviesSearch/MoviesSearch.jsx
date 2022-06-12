@@ -23,20 +23,22 @@ function MoviesPage({ onTitleSubmit }) {
     }
 
     return (
-        <form className={s.form} onSubmit={onFormSubmit}>
-            <input
-                className={s.input}
-                type="text"
-                autoComplete="off"
-                autoFocus
-                placeholder="Search movies..."
-                value={searchMovie}
-                onChange={onInputChange}
-            />
-            <button type='submit' className={s.btn}>
-                <span className={s.search}>Search</span>
-            </button>
-        </form>
+        <header className={s.form__header}>
+            <form className={s.form} onSubmit={onFormSubmit}>
+                <input
+                    className={s.form__input}
+                    type="text"
+                    autoComplete="off"
+                    autoFocus
+                    placeholder="Search movies..."
+                    value={searchMovie}
+                    onChange={onInputChange}
+                />
+                <button type='submit' className={s.form__btn}>
+                    <span className={s.form__btnLabel}>Search</span>
+                </button>
+            </form>
+        </header>
     )
 }
 

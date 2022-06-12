@@ -1,0 +1,14 @@
+.item {
+  list-style: none;
+}
+
+.title {
+  font-size: 25px;
+  color: rgb(32, 62, 196);
+}
+
+.info {
+  margin: 0;
+  padding: 15px;
+  font-weight: 400;
+}

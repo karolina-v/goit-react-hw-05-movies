@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import { fetchMoviesSearch } from '../services/movies-api';
 import MoviesSearch from '../components/MoviesSearch';
 import MovieCard from '../components/MovieCard';
-import { toast } from 'react-toastify';
 
 
 function MoviesView() {

@@ -1,17 +1,19 @@
-import { Link } from 'react-router-dom';
-// import { imageURL } from '../../services/movies-api';
+import { Link, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import s from './MovieCard.module.css';
 
 const MovieCard = ({ movies }) => {
+    const location = useLocation();
+    
     return (
         <ul className={s.list}>
-            {movies.map(movie => (
+            {movies && (
+                movies.map(movie => (
                 <li key={movie.id} className={s.item}>
-                    {/* <Link to={{
+                    <Link to={{
                         pathname: `/movies/${movie.id}`,
                         state: { from: location },
-                    }} className={s.title}> */}
-                    <Link to={`/movies/:${movie.id}`} className={s.title}>
+                    }} className={s.title}>
                         <img
                             className={s.image}
                             src={movie.poster_path}
@@ -22,9 +24,15 @@ const MovieCard = ({ movies }) => {
                         <p className={s.subtitle}>{movie.title || movie.name}</p>
                     </Link>
                 </li>
-            ))}
+                ))
+            )}
         </ul>
+        
     );
 }
+
+MovieCard.propTypes = {
+  movies: PropTypes.array,
+};
 
 export default MovieCard;

@@ -1,23 +1,17 @@
-import { useState, useEffect } from 'react';
-import { fetchMovieReviews } from '../../services/movies-api';
+import React from 'react';
+import PropTypes from 'prop-types';
+import s from './Reviews.module.css';
 
 function Reviews({ reviews }) {
-    // const [reviews, setReviews] = useState([]);
-
-    // useEffect(() => {
-    //     fetchMovieReviews(movieId)
-    //         .then(response => setReviews(response.reviews));
-    // }, [movieId]);
-
     return (
         <div>
-            {reviews.length > 0 ? (
+            {reviews ? (
                 <div>
                     <ul className={s.list}>
                         {reviews.map((elem, index) => (
                             <li key={index} className={s.item}>
                                 <p className={s.title}>{elem.author}</p>
-                                <p className={ s.desc}>{elem.content}</p>
+                                <p className={ s.info}>{elem.content}</p>
                             </li>
                         ))}
                     </ul>
@@ -26,5 +20,10 @@ function Reviews({ reviews }) {
         </div>
     );
 }
+
+Reviews.propTypes = {
+  reviews: PropTypes.array,
+};
+
 
 export default Reviews;
