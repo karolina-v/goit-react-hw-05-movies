@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import { IMAGE_URL } from '../../services/movies-api';
 import PropTypes from 'prop-types';
 import s from './MovieCard.module.css';
 
@@ -16,7 +17,7 @@ const MovieCard = ({ movies }) => {
                     }} className={s.title}>
                         <img
                             className={s.image}
-                            src={movie.poster_path}
+                            src={IMAGE_URL + movie.poster_path}
                             alt={movie.title || movie.name}
                             width="300"
                             height="450"

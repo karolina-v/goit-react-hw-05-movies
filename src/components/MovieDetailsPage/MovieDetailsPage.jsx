@@ -1,7 +1,10 @@
-import { NavLink, useRouteMatch, useHistory, useLocation } from 'react-router-dom';
+import { NavLink, useRouteMatch, useLocation, useHistory } from 'react-router-dom';
+import { useRef } from 'react';
 import PropTypes from 'prop-types';
+import { IMAGE_URL } from '../../services/movies-api';
 import s from './MovieDetailsPage.module.css';
 import Container from '../Container';
+
 
 function MovieDetailsPage({ movie }) {
     const { url } = useRouteMatch();
@@ -9,14 +12,19 @@ function MovieDetailsPage({ movie }) {
     const location = useLocation();
 
     const onBtnClick = () => {
-        history.push(location?.state?.from ?? '/');
+        history.push(location?.movie?.from ?? '/'); 
     };
+
 
     return (
         <Container>
-            <button type='button' className={s.button} onClick={onBtnClick}>Go back</button>
+            {movie && (
             <div>
-                <img className={s.image} src={movie.poster_path} alt={movie.title} />
+                <button type='button' className={s.button} onClick={onBtnClick}>Go back</button>
+            
+                
+            <div>
+                <img className={s.image} src={IMAGE_URL + movie.poster_path} alt={movie.title} />
 
                 <div className={s.box}>
                     <h2 className={s.title}>{movie.title || movie.name}</h2>
@@ -56,8 +64,10 @@ function MovieDetailsPage({ movie }) {
                     >
                         Reviews
                     </NavLink>
-                </nav>
+                        </nav>
+                </div>
             </div>
+                )}
         </Container>
     )
 }

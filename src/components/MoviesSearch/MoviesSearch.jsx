@@ -1,10 +1,14 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import { useLocation, useHistory } from "react-router-dom";
 import PropTypes from 'prop-types';
 import s from './MoviesSearch.module.css';
 
-function MoviesPage({ onTitleSubmit }) {
+function MoviesSearch({ onTitleSubmit }) {
     const [searchMovie, setSearchMovie] = useState('');
+
+    const location = useLocation();
+    const history = useHistory();
 
     const onFormSubmit = e => {
         e.preventDefault();
@@ -13,6 +17,11 @@ function MoviesPage({ onTitleSubmit }) {
         toast.error('Введите ключевое слово!');
         return;
         }
+        
+        history.push({
+        ...location,
+        search: `query=${searchMovie}`,
+        });
         
         onTitleSubmit(searchMovie);
         setSearchMovie('');
@@ -42,10 +51,10 @@ function MoviesPage({ onTitleSubmit }) {
     )
 }
 
-MoviesPage.propTypes = {
+MoviesSearch.propTypes = {
   onTitleSubmit: PropTypes.func.isRequired,
 };
 
-export default MoviesPage;
+export default MoviesSearch;
 
 

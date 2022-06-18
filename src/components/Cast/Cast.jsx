@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { IMAGE_URL } from '../../services/movies-api';
 import s from './Cast.module.css';
 
 function Cast({ cast }) {
@@ -9,7 +10,7 @@ function Cast({ cast }) {
             {cast.map(elem => (
                 <li key={elem.id} className={s.item}>
                     <img
-                        src={elem.profile_path}
+                        src={IMAGE_URL + elem.profile_path}
                         alt={elem.name}
                         width='100'
                         height='150'
