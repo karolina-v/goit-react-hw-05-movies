@@ -1,5 +1,4 @@
 import { NavLink, useRouteMatch, useLocation, useHistory } from 'react-router-dom';
-import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { IMAGE_URL } from '../../services/movies-api';
 import s from './MovieDetailsPage.module.css';
